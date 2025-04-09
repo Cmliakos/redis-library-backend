@@ -10,7 +10,9 @@ public class BookService {
     private final Jedis jedis;
 
     public BookService() {
-        this.jedis = new Jedis("localhost", 6379);
+        this.jedis = new Jedis("maximum-collie-10229.upstash.io", 6379, true);
+        this.jedis.auth("default", "ASf1AAIjcDExZDAyZDdmNDY5YzY0N2ZjYmU3MDI3YzE3ZDljNWVmYXAxMA");
+
     }
 
     public List<Map<String, String>> getAllBooks(String sortBy) {
