@@ -43,6 +43,41 @@ public class RedisDataSetup {
         jedis.hset("book5", "price", "$9.99");
         jedis.hset("book5", "imageUrl", "https://redis-library-backend.onrender.com/images/book5.jpg");
 
+        // Book 6
+        jedis.hset("book6", "title", "Pride and Prejudice");
+        jedis.hset("book6", "author", "Jane Austen");
+        jedis.hset("book6", "description", "A romantic novel that charts the emotional development of the protagonist, Elizabeth Bennet.");
+        jedis.hset("book6", "price", "$10.99");
+        jedis.hset("book6", "imageUrl", "https://redis-library-backend.onrender.com/images/book6.jpg");
+
+        // Book 7
+        jedis.hset("book8", "title", "Jane Eyre");
+        jedis.hset("book8", "author", "Charlotte Brontë");
+        jedis.hset("book8", "description", "A novel that follows the experiences of its eponymous heroine, including her growth to adulthood and her love for Mr. Rochester.");
+        jedis.hset("book8", "price", "$11.99");
+        jedis.hset("book8", "imageUrl", "https://redis-library-backend.onrender.com/images/book7.jpg");
+
+        // Book 8
+        jedis.hset("book8", "title", "The Great Gatsby");
+        jedis.hset("book8", "author", "F. Scott Fitzgerald");
+        jedis.hset("book8", "description", "A story of the mysteriously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.");
+        jedis.hset("book8", "price", "$15.99");
+        jedis.hset("book8", "imageUrl", "https://redis-library-backend.onrender.com/images/book8.jpg");
+
+        // Book 9
+        jedis.hset("book9", "title", "Animal Farm");
+        jedis.hset("book9", "author", "George Orwell");
+        jedis.hset("book9", "description", "A satirical allegory of the Russian Revolution and the rise of Stalinism.");
+        jedis.hset("book9", "price", "$8.99");
+        jedis.hset("book9", "imageUrl", "https://redis-library-backend.onrender.com/images/book9.jpg");
+
+        // Book 10
+        jedis.hset("book10", "title", "Le Comte de Monte-Cristo");
+        jedis.hset("book10", "author", "Alexandre Dumas");
+        jedis.hset("book10", "description", "The work, which is set during the time of the Bourbon Restoration in France, tells the story of an unjustly incarcerated man who escapes to find revenge.");
+        jedis.hset("book10", "price", "$12.50");
+        jedis.hset("book10", "imageUrl", "https://redis-library-backend.onrender.com/images/book10.jpg");
+
         System.out.println("✅ RedisDataSetup: Books seeded into Redis.");
     }
 }
