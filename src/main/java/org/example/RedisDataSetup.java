@@ -8,9 +8,6 @@ public class RedisDataSetup {
         Jedis jedis = new Jedis("maximum-collie-10229.upstash.io", 6379, true);
         jedis.auth("default", "ASf1AAIjcDExZDAyZDdmNDY5YzY0N2ZjYmU3MDI3YzE3ZDljNWVmYXAxMA");
 
-        // Optional: Clear all keys before reseeding
-        jedis.flushDB();
-
         // Book 1
         jedis.hset("book1", "title", "To Kill a Mockingbird");
         jedis.hset("book1", "author", "Harper Lee");
