@@ -62,11 +62,11 @@ public class RedisSeeder {
             jedis.hset("book6", "imageUrl", "https://redis-library-backend.onrender.com/images/book6.jpg");
 
             // Book 7
-            jedis.hset("book8", "title", "Jane Eyre");
-            jedis.hset("book8", "author", "Charlotte Brontë");
-            jedis.hset("book8", "description", "A novel that follows the experiences of its eponymous heroine, including her growth to adulthood and her love for Mr. Rochester.");
-            jedis.hset("book8", "price", "$11.99");
-            jedis.hset("book8", "imageUrl", "https://redis-library-backend.onrender.com/images/book7.jpg");
+            jedis.hset("book7", "title", "Jane Eyre");
+            jedis.hset("book7", "author", "Charlotte Brontë");
+            jedis.hset("book7", "description", "A novel that follows the experiences of its eponymous heroine, including her growth to adulthood and her love for Mr. Rochester.");
+            jedis.hset("book7", "price", "$11.99");
+            jedis.hset("book7", "imageUrl", "https://redis-library-backend.onrender.com/images/book7.jpg");
 
             // Book 8
             jedis.hset("book8", "title", "The Great Gatsby");
