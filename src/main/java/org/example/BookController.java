@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.*;
 
-@CrossOrigin(origins = "http://localhost:8000")
+@CrossOrigin(origins = "https://redis-project.netlify.app")
 @RestController
 public class BookController {
 
