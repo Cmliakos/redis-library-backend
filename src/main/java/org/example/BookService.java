@@ -33,6 +33,8 @@ public class BookService {
             case "title_desc" -> books.sort(Comparator.comparing((Map<String, String> b) -> b.getOrDefault("title", "")).reversed());
             case "price_low" -> books.sort(Comparator.comparingDouble(b -> parsePrice(b.get("price"))));
             case "price_high" -> books.sort(Comparator.comparingDouble((Map<String, String> b) -> parsePrice(b.get("price"))).reversed());
+            case "views_desc" -> books.sort(Comparator.comparingInt(b -> -Integer.parseInt(b.getOrDefault("views", "0")))
+            );
         }
 
         return books;
