@@ -77,6 +77,15 @@ public class BookService {
         return new ArrayList<>(jedis.zrevrange("topViewed", 0, 2));
     }
 
+    public Set<String> getAllBookKeys() {
+        return jedis.smembers("bookIds");
+    }
+
+    public void resetViewCount(String bookId) {
+        jedis.set("views:" + bookId, "0");
+        jedis.zadd("topViewed", 0, bookId);
+    }
+
     public void addFavorite(String userId, String bookId) {
         jedis.sadd("favorites:" + userId, bookId);
         jedis.sadd("favoritedBy:" + bookId, userId);

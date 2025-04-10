@@ -37,10 +37,21 @@ public class BookController {
         bookService.removeFavorite(userId, bookId);
     }
 
+    @PostMapping("/resetViews")
+    public void resetViews() {
+        Set<String> bookKeys = bookService.getAllBookKeys();
+        for (String key : bookKeys) {
+            bookService.resetViewCount(key);
+        }
+    }
+
+
     @GetMapping("/favorites")
     public Set<String> getUserFavorites(@RequestParam String userId) {
         return bookService.getUserFavorites(userId);
     }
-}
+    }
+
+
 
 
