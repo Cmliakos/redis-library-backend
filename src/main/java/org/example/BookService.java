@@ -16,7 +16,7 @@ public class BookService {
     }
 
     public List<Map<String, String>> getAllBooks(String sortBy) {
-        Set<String> keys = jedis.keys("book*");
+        Set<String> keys = jedis.smembers("bookIds");
         List<Map<String, String>> books = new ArrayList<>();
 
         for (String key : keys) {

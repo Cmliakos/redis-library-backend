@@ -68,6 +68,9 @@ public class RedisSeeder {
         } else {
             System.out.println("✅ Already exists: " + title);
         }
+
+        // Always add the book key to the set (even if it already exists)
+        jedis.sadd("bookIds", key);
     }
 }
 
