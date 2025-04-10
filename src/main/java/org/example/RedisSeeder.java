@@ -14,87 +14,60 @@ public class RedisSeeder {
     }
 
     public void seedIfNeeded() {
-        // If key doesn't exist, Redis was likely wiped — seed everything
-        if (!"true".equals(jedis.get("dataSeeded"))) {
-            System.out.println("Redis empty — seeding books...");
+        System.out.println("🔁 Checking Redis for missing books...");
 
-            // Book 1
-            jedis.hset("book1", "title", "To Kill a Mockingbird");
-            jedis.hset("book1", "author", "Harper Lee");
-            jedis.hset("book1", "description", "A gripping, heart-wrenching, and wholly remarkable tale of coming-of-age in a South poisoned by prejudice.");
-            jedis.hset("book1", "price", "$12.99");
-            jedis.hset("book1", "imageUrl", "https://redis-library-backend.onrender.com/images/book1.jpg");
+        seedBook("book1", "To Kill a Mockingbird", "Harper Lee",
+                "A gripping, heart-wrenching, and wholly remarkable tale of coming-of-age in a South poisoned by prejudice.",
+                "$12.99", "https://redis-library-backend.onrender.com/images/book1.jpg");
 
-            // Book 2
-            jedis.hset("book2", "title", "The Hobbit");
-            jedis.hset("book2", "author", "J.R.R. Tolkien");
-            jedis.hset("book2", "description", "Bilbo Baggins embarks on a journey to reclaim treasure from the dragon Smaug.");
-            jedis.hset("book2", "price", "$14.99");
-            jedis.hset("book2", "imageUrl", "https://redis-library-backend.onrender.com/images/book2.jpg");
+        seedBook("book2", "The Hobbit", "J.R.R. Tolkien",
+                "Bilbo Baggins embarks on a journey to reclaim treasure from the dragon Smaug.",
+                "$14.99", "https://redis-library-backend.onrender.com/images/book2.jpg");
 
-            // Book 3
-            jedis.hset("book3", "title", "1984");
-            jedis.hset("book3", "author", "George Orwell");
-            jedis.hset("book3", "description", "A dystopian novel set in a totalitarian society ruled by Big Brother.");
-            jedis.hset("book3", "price", "$11.50");
-            jedis.hset("book3", "imageUrl", "https://redis-library-backend.onrender.com/images/book3.jpg");
+        seedBook("book3", "1984", "George Orwell",
+                "A dystopian novel set in a totalitarian society ruled by Big Brother.",
+                "$11.50", "https://redis-library-backend.onrender.com/images/book3.jpg");
 
-            // Book 4
-            jedis.hset("book4", "title", "Fahrenheit 451");
-            jedis.hset("book4", "author", "Ray Bradbury");
-            jedis.hset("book4", "description", "A novel about a future society where books are outlawed and burned.");
-            jedis.hset("book4", "price", "$13.25");
-            jedis.hset("book4", "imageUrl", "https://redis-library-backend.onrender.com/images/book4.jpg");
+        seedBook("book4", "Fahrenheit 451", "Ray Bradbury",
+                "A novel about a future society where books are outlawed and burned.",
+                "$13.25", "https://redis-library-backend.onrender.com/images/book4.jpg");
 
-            // Book 5
-            jedis.hset("book5", "title", "The Old Man and the Sea");
-            jedis.hset("book5", "author", "Ernest Hemingway");
-            jedis.hset("book5", "description", "An aging fisherman engages in an epic battle to catch a giant marlin.");
-            jedis.hset("book5", "price", "$9.99");
-            jedis.hset("book5", "imageUrl", "https://redis-library-backend.onrender.com/images/book5.jpg");
+        seedBook("book5", "The Old Man and the Sea", "Ernest Hemingway",
+                "An aging fisherman engages in an epic battle to catch a giant marlin.",
+                "$9.99", "https://redis-library-backend.onrender.com/images/book5.jpg");
 
+        seedBook("book6", "Pride and Prejudice", "Jane Austen",
+                "A romantic novel that charts the emotional development of the protagonist, Elizabeth Bennet.",
+                "$10.99", "https://redis-library-backend.onrender.com/images/book6.jpg");
 
-            // Book 6
-            jedis.hset("book6", "title", "Pride and Prejudice");
-            jedis.hset("book6", "author", "Jane Austen");
-            jedis.hset("book6", "description", "A romantic novel that charts the emotional development of the protagonist, Elizabeth Bennet.");
-            jedis.hset("book6", "price", "$10.99");
-            jedis.hset("book6", "imageUrl", "https://redis-library-backend.onrender.com/images/book6.jpg");
+        seedBook("book7", "Jane Eyre", "Charlotte Brontë",
+                "A novel that follows the experiences of its eponymous heroine, including her growth to adulthood and her love for Mr. Rochester.",
+                "$11.99", "https://redis-library-backend.onrender.com/images/book7.jpg");
 
-            // Book 7
-            jedis.hset("book7", "title", "Jane Eyre");
-            jedis.hset("book7", "author", "Charlotte Brontë");
-            jedis.hset("book7", "description", "A novel that follows the experiences of its eponymous heroine, including her growth to adulthood and her love for Mr. Rochester.");
-            jedis.hset("book7", "price", "$11.99");
-            jedis.hset("book7", "imageUrl", "https://redis-library-backend.onrender.com/images/book7.jpg");
+        seedBook("book8", "The Great Gatsby", "F. Scott Fitzgerald",
+                "A story of the mysteriously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.",
+                "$15.99", "https://redis-library-backend.onrender.com/images/book8.jpg");
 
-            // Book 8
-            jedis.hset("book8", "title", "The Great Gatsby");
-            jedis.hset("book8", "author", "F. Scott Fitzgerald");
-            jedis.hset("book8", "description", "A story of the mysteriously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.");
-            jedis.hset("book8", "price", "$15.99");
-            jedis.hset("book8", "imageUrl", "https://redis-library-backend.onrender.com/images/book8.jpg");
+        seedBook("book9", "Animal Farm", "George Orwell",
+                "A satirical allegory of the Russian Revolution and the rise of Stalinism.",
+                "$8.99", "https://redis-library-backend.onrender.com/images/book9.jpg");
 
-            // Book 9
-            jedis.hset("book9", "title", "Animal Farm");
-            jedis.hset("book9", "author", "George Orwell");
-            jedis.hset("book9", "description", "A satirical allegory of the Russian Revolution and the rise of Stalinism.");
-            jedis.hset("book9", "price", "$8.99");
-            jedis.hset("book9", "imageUrl", "https://redis-library-backend.onrender.com/images/book9.jpg");
+        seedBook("book10", "Le Comte de Monte-Cristo", "Alexandre Dumas",
+                "The story of an unjustly incarcerated man who escapes to find revenge.",
+                "$12.50", "https://redis-library-backend.onrender.com/images/book10.jpg");
+    }
 
-            // Book 10
-            jedis.hset("book10", "title", "Le Comte de Monte-Cristo");
-            jedis.hset("book10", "author", "Alexandre Dumas");
-            jedis.hset("book10", "description", "The work, which is set during the time of the Bourbon Restoration in France, tells the story of an unjustly incarcerated man who escapes to find revenge.");
-            jedis.hset("book10", "price", "$12.50");
-            jedis.hset("book10", "imageUrl", "https://redis-library-backend.onrender.com/images/book10.jpg");
-
-
-            // Set flag
-            jedis.set("dataSeeded", "true");
-            System.out.println("Books seeded successfully.");
+    private void seedBook(String key, String title, String author, String description, String price, String imageUrl) {
+        if (!jedis.exists(key)) {
+            System.out.println("📚 Seeding: " + title);
+            jedis.hset(key, "title", title);
+            jedis.hset(key, "author", author);
+            jedis.hset(key, "description", description);
+            jedis.hset(key, "price", price);
+            jedis.hset(key, "imageUrl", imageUrl);
         } else {
-            System.out.println("Redis already seeded. Skipping...");
+            System.out.println("✅ Already exists: " + title);
         }
     }
 }
+
