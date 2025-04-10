@@ -1,6 +1,7 @@
 package org.example;
 
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.Jedis;
 
 import java.util.*;
@@ -8,14 +9,18 @@ import java.util.*;
 @Service
 public class BookService {
     private final Jedis jedis;
+    private final RedisSeeder redisSeeder;
 
-    public BookService() {
+    @Autowired
+    public BookService(RedisSeeder redisSeeder) {
         this.jedis = new Jedis("maximum-collie-10229.upstash.io", 6379, true);
         this.jedis.auth("default", "ASf1AAIjcDExZDAyZDdmNDY5YzY0N2ZjYmU3MDI3YzE3ZDljNWVmYXAxMA");
-
+        this.redisSeeder = redisSeeder;
     }
 
     public List<Map<String, String>> getAllBooks(String sortBy) {
+        redisSeeder.seedIfNeeded();
+
         Set<String> keys = jedis.smembers("bookIds");
         List<Map<String, String>> books = new ArrayList<>();
 
