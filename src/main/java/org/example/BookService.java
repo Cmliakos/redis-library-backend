@@ -21,7 +21,13 @@ public class BookService {
 
         for (String key : keys) {
             Map<String, String> book = jedis.hgetAll(key);
-            book.put("id", key);  // include the Redis key for lookup later
+
+            // Skip this key if the book hash doesn't exist or has no fields
+            if (book == null || book.isEmpty() || !book.containsKey("title")) {
+                continue;
+            }
+
+            book.put("id", key);
             book.put("views", jedis.get("views:" + key) != null ? jedis.get("views:" + key) : "0");
             book.put("favorites", String.valueOf(jedis.scard("favoritedBy:" + key)));
             book.put("isFavorite", jedis.sismember("favorites:user1", key) ? "true" : "false");
